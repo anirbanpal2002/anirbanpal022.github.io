@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>FEEDBACK</title>
+</head>
+<body>
+    <div class="container">
+        <form onsubmit="sendEmail(); reset(); return false;"  >
+            <h3>SEND ME MY FEED BACK</h3>
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Email id" required>
+            <input type="phone" id="phone" placeholder="Phone No." required>
+            <textarea id="message" rows="5" placeholder="Send me your honest opinion about Anirban"></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function sendEmail(){
+            Email.send({
+                Host : "smtp.elasticemail.com",
+                Username : "anirbanpal022@gmail.com",
+                Password : "8D4D1C82B531D538F51707E908CAAE2BE47C",
+                To : 'anirbanpal022@gmail.com',
+                From : "anirbanpal022@gmail.com",
+                Subject : "First contact from",
+                Body : "Name:" +document.getElementById("name").value
+                +"<br> Emial:" +document.getElementById("email").value
+                +"<br> Phone NO:" +document.getElementById("phone").value
+                +"<br> Message" +document.getElementById("message").value
+              }).then(
+               message => alert("Done")
+          );
+
+        }
+    </script>
+
+</body>
+</html>
